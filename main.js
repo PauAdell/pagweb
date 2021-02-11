@@ -70,6 +70,8 @@ $(window).on("load",  async () => {
             password : contra
         }).then(response => {
             console.log(response);
+            alert("User created");
+            window.open("login.html");
         }).catch(err => {
             console.log(err);
         })
