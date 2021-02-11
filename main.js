@@ -66,7 +66,7 @@ $(window).on("load",  async () => {
         axios.post('https://fpv-bcn.herokuapp.com/users', {
             id : newid,
             username : nombre,
-            email : mail,
+            mail : mail,
             password : contra
         }).then(response => {
             console.log(response);
