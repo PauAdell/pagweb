@@ -1,8 +1,8 @@
 var url = 'https://fpv-bcn.herokuapp.com/users';
 var id = 1;
-let nombre;
-let mail;
-let contra;
+var nombre;
+var mail;
+var contra;
 
 const load = response => {
     if(!response) return;
@@ -48,11 +48,11 @@ $(window).on("load",  async () => {
     $('#register').on("submit", event => {
         event.preventDefault();
         if(!handleSubmit2()) return;
-        if (info.find(item => item.mail === mail) || info.find(item => item.user === nombre))  {
+        if (info.find(item => item.mail === mail) || info.find(item => item.username === nombre))  {
             $('#Alerta').text('User already exists');
             document.getElementById("Alerta").className = "col-12 bg-danger";
             return;
-        }
+        } else { 
         var newid = 0
         var bool;
         while(bool) {
@@ -73,12 +73,13 @@ $(window).on("load",  async () => {
         }).catch(err => {
             console.log(err);
         })
+    }
     });
 
     $('#login').on("submit", event => {
         event.preventDefault();
         if(!handleSubmit()) return;
-        if(info.find(item => item.user === nombre) && info.find(item => item.password === contra))  {
+        if(info.find(item => item.username === nombre) && info.find(item => item.password === contra))  {
             window.open("drone.html");
         } else {
             $('#Alerta').text('User does not exist / wrong password');
