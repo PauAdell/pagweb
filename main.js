@@ -53,6 +53,7 @@ $(window).on("load",  async () => {
             document.getElementById("Alerta").className = "col-12 bg-danger";
             return;
         } else { 
+        
         var newid = 0
         var bool;
         while(bool) {
@@ -70,8 +71,7 @@ $(window).on("load",  async () => {
             password : contra
         }).then(response => {
             console.log(response);
-            alert("User created");
-            window.open("login.html");
+            registeradvert();
         }).catch(err => {
             console.log(err);
         })
@@ -82,7 +82,7 @@ $(window).on("load",  async () => {
         event.preventDefault();
         if(!handleSubmit()) return;
         if(info.find(item => item.username === nombre) && info.find(item => item.password === contra))  {
-            window.open("drone.html");
+            loginadvert();
         } else {
             $('#Alerta').text('User does not exist / wrong password');
             document.getElementById("Alerta").className = "col-12 bg-danger";
@@ -99,6 +99,40 @@ function alertinfo(){
         </div>
         <button id="delete" type="button" onclick="removeitem()" class="btn btn-success itemtoremove">Understood! Double click me to remove</button>
         `
+    )
+}
+
+function registeradvert(){
+    $('#gallery-alert').append(
+        `<div class="bg-blury">
+        <div class="popupcontent">
+          <br><br>
+          User created successfully!
+          <br>
+          An Email has been sent.
+          <br><br><br>
+          <a href="login.html">
+            <button type="button" class="btn btn-info">LogIn</button>
+          </a>
+        </div>
+      </div>`
+    )
+}
+
+function loginadvert(){
+    $('#gallery-alert').append(
+        `<div class="bg-blury">
+        <div class="popupcontent">
+          <br><br>
+          User loged in!
+          <br><br>
+          You now have acces to our photos!
+          <br><br><br>
+          <a href="drone.html">
+            <button type="button" class="btn btn-info">Gallery</button>
+          </a>
+        </div>
+      </div>`
     )
 }
 
